@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <template id="alipay_form">
+            <div>
+                <input type="hidden" name="data_set" t-att-data-action-url="tx_url" data-remove-me=""/>
+                <input type="hidden" name="app_id" t-att-value="app_id"/>
+                <input type="hidden" name="method" t-att-value="method"/>
+                <input type="hidden" name="version" t-att-value="version"/>
+                <input type="hidden" name="notify_url" t-att-value="notify_url"/>
+                <input type="hidden" name="return_url" t-att-value="return_url"/>
+                <input type="hidden" name="charset" t-att-value="charset"/>
+                <input type="hidden" name="timestamp" t-att-value="timestamp"/>
+                <input type="hidden" name="sign_type" t-att-value="sign_type"/>
+                <input type="hidden" name="biz_content" t-att-value="biz_content"/>
+                <input type="hidden" name="sign" t-att-value="sign" />               
+            </div>
+        </template>
+    </data>
+</odoo>
