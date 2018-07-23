@@ -6,7 +6,7 @@
 
 ​	支付宝接口开发文档，规定了一些必选参数和非必选参数，详见[支付宝接口开发文档](https://docs.open.alipay.com/270/105898/)
 
-![关键参数](./img/关键参数.png)![](.\img\通知参数.png)
+![关键参数](./img/关键参数.png)![](./img/通知参数.png)
 
 ​	
 
@@ -22,7 +22,7 @@
 
 ​	我们请求支付宝的参数，都是通过RSA2算法加密过的。首先，我们要先在支付宝上申请一个app，支付宝审核过之后，会给我们该app的AppId。如果是沙箱环境，支付宝有提供测试app。我们需要用openssl工具生成app的公钥和私钥，app公钥上传支付宝，然后支付宝会给你一个支付宝公钥。
 
-![](.\img\沙箱应用.png)
+![](./img/沙箱应用.png)
 
 ​	**生成秘钥的方式：**
 
@@ -54,7 +54,7 @@ MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDQWiDVZ7XYxa4CQsZoB3n7bfxLDkeGKjyQPt2FUtm4
 
 ​	**我们的app公钥上传支付宝，要去掉 -----BEGIN PUBLIC KEY-----和-----END PUBLIC KEY-----标识，保存的支付宝公钥要加上这两个标识，否则在加密解密时会出错。**
 
-​	![](.\img\app公钥.png)
+​	![](./img/app公钥.png)
 
 
 
@@ -1024,23 +1024,23 @@ class TxAlipay(models.Model):
 
 然后在开票的配置中，选择收单，点击进入之后选择Alipay进行设置。输入app ID，app私钥，支付宝公钥保存。
 
-![](.\img\收单.png)
+![](./img/收单.png)
 
-![](.\img\ailpay配置.png)
+![](./img/ailpay配置.png)
 
 在输入app私钥，支付宝公钥时，一定要带上标识。
 
-![](.\img\alipay配置2.png)
+![](./img/alipay配置2.png)
 
 左边的按钮可以切换测试和生产环境，右边的按钮只有切换到已发布，在支付的界面才有alipay的选项。
 
 都配置好之后，我们可以测试一下支付宝支付的方式能不能用，点到网站的商城里，把商品加入购物车。
 
-![](.\img\购物车.png)
+![](./img/购物车.png)
 
 点击结账流程，确认收货地址。
 
-![](.\img\确认收货地址.png)
+![](./img/确认收货地址.png)
 
 支付方式选择Alipay，点击付款
 
@@ -1052,10 +1052,10 @@ class TxAlipay(models.Model):
 
 点击右边的登录账户付款，用支付宝给我们的测试账号进行登录。
 
-![](.\img\支付.png)
+![](./img/支付.png)
 
 然后，输入密码进行支付。
 
-![](.\img\支付成功.png)
+![](./img/支付成功.png)
 
 支付成功3秒后，会跳转到我们return_url指定的页面。
