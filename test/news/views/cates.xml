@@ -1,0 +1,15 @@
+<odoo>
+    <data>
+        <template id="category">
+            <ul id="cates">
+                <t t-if="categories">
+                    <t t-foreach="categories" t-as="cate">
+                        <li>
+                            <t t-esc="cate.name"/>
+                        </li>
+                    </t>
+                </t>
+            </ul>
+        </template>
+    </data>
+</odoo>

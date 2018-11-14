@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="wantech_payment_receipt" inherit_id="account.report_payment_receipt">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+                    <t t-call="web.external_layout">
+                    <div class="page">
+                        <div style="margin:auto 0;text-align:center;">
+                            <div>嘉濤耆康之家</div>
+                            <div>東威閣1字樓 青菱徑3號 屯門 新界 Hong Kong</div>
+                            <div>電話：<span>2440 9188</span> 傳真:<span>2440 6200</span></div>
+                            <div>收據</div>
+                            <div t-if="o.first_print &gt;= 2">
+                                <div>####################</div>
+                                    <strong>重印收據</strong>
+                                <div>####################</div>  
+                            </div>
+                        </div>
+
+                        <div class="row"  style="margin-top:30px">
+                            <div class="col-xs-6" t-if="o.partner_type">
+                                <t t-if="o.partner_type == 'customer'">
+                                    <strong>院友名稱: </strong><span t-field="o.partner_id"/>
+                                </t>
+                            </div>
+                            <div class="col-xs-6">
+                                <strong>付款編號: </strong><span t-field="o.name"/>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" t-if="o.amount">
+                                <strong>交付: </strong><span t-field="o.amount" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/>
+                             </div>
+                            <div class="col-xs-6">
+                                <strong>付款日期: </strong> <span t-field="o.payment_date"/>
+                             </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-6" t-if="o.payment_type">
+                                <strong>付款方式: </strong><span t-field="o.journal_id"/>
+                             </div>
+                            <div class="col-xs-6" t-if="o.communication">
+                                <strong>備註: </strong> <span t-field="o.communication"/>
+                            </div>
+                        </div>                       
+                        <table class="table table-condensed">
+                            <thead>
+                                <tr>
+                                    <th>發票編號</th>
+                                    <th class="text-right">發票日期</th>
+                                    <th class="text-right">月費計劃</th>
+                                    <th class="text-right">內容</th>                                 
+                                    <th class="text-right">單價</th>
+                                    <th class="text-right">已付金額</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr t-foreach="o.invoice_ids" t-as="inv">
+                                    <td><span t-field="inv.number" t-if="o.journal_id.name!='按金'" /><span t-field="o.journal_id.name" t-if="o.journal_id.name=='按金'" /></td>
+                                    <td class="text-right"><span t-field="o.payment_date"/></td>
+                                    <td class="text-right"><span t-field="inv.origin"/></td>
+                                    <td class="text-right"><span t-field="inv.comment"/></td>
+                                    <td class="text-right"><span t-field="inv.amount_total"/></td>
+                                    <td class="text-right"><span t-esc="inv.amount_total - inv.residual" t-options="{'widget': 'monetary', 'display_currency': o.currency_id}"/></td>
+                                </tr>
+                                    <t t-foreach="o.invoice_ids" t-as="inv2">
+                                        <tr t-foreach="inv2.payment_move_line_ids" t-as="inv3">
+                                            <t t-foreach="inv3.move_id" t-as="inv4">
+                                                <t t-if="inv4.name2 == 'DEP'">
+                                                    <td>
+                                                        <span t-field="inv4.name"/>
+                                                    </td>
+                                                    <td class="text-right"><span t-field="inv3.date"/></td>
+                                                    <td class="text-right"></td>
+                                                    <td class="text-right"></td>
+                                                    <td class="text-right"><span t-field="inv3.balance"/></td>
+                                                    <td class="text-right"><span t-field="inv3.balance"/></td>
+                                                </t>
+                                            </t>
+                                        </tr>
+                                    </t>
+                            </tbody>
+                           <tfoot>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td class="text-right">付款總額:</td>
+                                    <td class="text-right"><span t-field="o.amount"/></td>
+                                </tr>
+                            </tfoot>
+                        </table>
+                        <div style="width:100%;height:250px;">
+                            <div style="position:absolute;right:0px;margin-top:100px;">
+                                <div style="border-bottom:black 1px solid;width:300px;height:100px;display:block;"></div>
+                                <div style="text-align:right;">公司印鑑及簽署</div>
+                            </div>
+                        </div>
+                        <div>
+                            <div>備註：</div>
+                            <div>1.如付款延遲7天以上，會另加費用5%的附加費。</div>
+                            <div>2.收款時間為周一至週六上午9時至下午5時。</div>
+                        </div>
+                    </div>
+                    </t>
+        </xpath>
+    </template>
+
+   <template id="wantech_external_layout_standard" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[@class='header']" position="replace">
+                    <div class="header"></div>
+        </xpath>
+    </template>
+
+    
+</odoo>

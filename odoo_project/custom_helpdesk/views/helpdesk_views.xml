@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="custom_helpdesk_ticket_form" model="ir.ui.view">
+            <field name="name">custom_helpdesk_ticket_form</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_ticket_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='partner_id']" position="after">
+                    <field name="referred_by"/>
+                </xpath>
+                <xpath expr="//group/field[@name='priority']" position="after">
+                    <field name="create_date" string="Create Time" readonly="1"/>
+                    <field name="sloved_time"/>
+                    <field name="ballpark"/>
+                    <field name="sow"/>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom_helpdesk_tickets_tree" model="ir.ui.view">
+            <field name="name">custom_helpdesk_tickets_tree</field>
+            <field name="model">helpdesk.ticket</field>
+            <field name="inherit_id" ref="helpdesk.helpdesk_tickets_view_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree/field[@name='stage_id']" position="before">
+                    <field name="create_date"/>
+                    <field name="sloved_time"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

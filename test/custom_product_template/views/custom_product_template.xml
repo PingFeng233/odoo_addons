@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+
+    <record id="view_form_custom_product_template" model="ir.ui.view">
+        <field name="name">custom.product.template.common.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='general_information']" position="inside">
+                <group colspan="4">
+                    <field name="is_material" colspan="1"/>
+                    <div colspan="1"/>
+                    <field name="is_product" colspan="1"/>
+                    <div colspan="1"/>
+                </group>
+                <group>
+                    <group class="group_left">
+                        <field name="description"/>
+                    </group>
+                    <group class="group_right">
+                        <field name="short_description"/>
+                    </group>
+                </group>
+
+                <group name="product_group" attrs="{'invisible':[('is_product','=',False)]}">
+                    <group class="group_left">
+                        <field name="paper_no"/>
+                        <field name="brand"/>
+                    </group>
+                    <group class="group_right">
+                        <field name="season"/>
+                    </group>
+                </group>
+
+                <group name="material_group" attrs="{'invisible':[('is_material','=',False)]}">
+                    <group class="group_left">
+                        <field name="in_charge"/>
+                        <field name="material_type"/>
+                        <field name="ingredient"/>
+                        <field name="weight"/>
+                        <field name="region"/>
+                        <field name="remark"/>
+                    </group>
+                    <group class="group_right">
+                        <field name="status"/>
+                        <field name="user_status"/>
+                        <field name="method"/>
+                        <field name="yarn_count"/>
+                        <field name="process1"/>
+                        <field name="process2"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_supplierinfo_form_view_inherit" model="ir.ui.view">
+        <field name="name">product.supplierinfo.form.view</field>
+        <field name="model">product.supplierinfo</field>
+        <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="/form/group" position="after">
+                <group>
+                    <group class="group_left">
+                        <field name="buik_lead_time"/>
+                        <field name="wastage"/>
+                        <field name="season"/>
+                        <field name="bulk_max_order"/>
+                        <field name="bulk_min_order"/>
+                        <field name="remark"/>
+                    </group>
+                    <group class="group_right">
+                        <field name="sample_lead_time"/>
+                        <field name="test_result"/>
+                        <field name="sample_max_order"/>
+                        <field name="sample_min_order"/>
+                    </group>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

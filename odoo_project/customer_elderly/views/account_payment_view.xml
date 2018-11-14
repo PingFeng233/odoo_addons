@@ -1,0 +1,82 @@
+<!-- test -->
+<odoo>
+     <record id="view_elderly_account_payment_form" model="ir.ui.view">
+        <field name="name">customer_elderly.account_payment.form</field>
+        <field name="model">account.payment</field>
+        <field eval="15" name="sequence"/>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <!-- <xpath expr="/form/header/button[@name='post']" position="attributes">
+                     <attribute name="invisible">True</attribute>
+                </xpath> -->
+
+                <xpath expr="/form/header" position="inside">
+                    <!-- <button name="custom_post" class="oe_highlight" states="draft" string="confirm" type="object"/> -->
+                    <button name="payment_print" class="oe_highlight" type="object" string="Print Receipt" attrs="{'invisible': ['|',('payment_type', 'in', 'outbound'), ('state', 'in', 'draft')]}"/>
+                    <button name="payment_print_cheque" class="oe_highlight" type="object" string="Print Cheque" attrs="{'invisible': ['|',('payment_type', 'in', 'inbound'),('state','in','draft')]}"/>
+                    <button name="payment_print_book" class="oe_highlight" type="object" string="Print invoice(訂金)" attrs="{'invisible':  ['|',('payment_type','in','outbound'),('state','in','draft')]}"/>
+                    <button name="payment_print_deposit" class="oe_highlight" type="object" string="Print invoice(按金)" attrs="{'invisible': ['|',('payment_type','in','outbound'),('state','in','draft')]}"/>
+                </xpath>
+
+                <xpath expr="/form/sheet/group" position="inside">
+                    <group attrs="{'invisible': [('payment_type', 'in','outbound')]}">
+                        <field name="check_to_print" invisible="1"/>
+                        <field name="payment_type" invisible="1"/>
+                        <field name="payment_date"/>
+                        <!-- <field name="item_id"/> -->
+                        <!-- <field name="quantity"/> -->
+                        <!-- <field name="upload_file" filename="file_name"/> -->
+                        <field name="file_name" invisible="1"/>
+                        <field name="exp_date"/>
+                        <field name="communication"/>
+                        <div>
+                            <label string="重印:"/>
+                            <label string="是" attrs="{'invisible': [('first_print','&lt;',1)]}"/>
+                            <label string="否" attrs="{'invisible': [('first_print','&gt;=',1)]}"/>
+                            <field name="first_print" invisible="1" />
+                        </div>
+                    </group>
+                </xpath>
+                <xpath expr="/form/sheet/group/group[2]" position="inside">
+                    <field name="payment_type" invisible="1"/>
+                    <field name="payment_date"/>
+                </xpath>
+
+
+                <xpath expr="/form/sheet/group/group[2]" position="attributes">
+                 <attribute name="attrs">{'invisible': [('payment_type', 'in', 'inbound')]}</attribute>
+                </xpath>
+
+
+            </data>
+        </field>
+    </record>
+
+  <record id="view_elderly_account_invoice_form2" model="ir.ui.view">
+        <field name="name">account.invoice</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="/form/header" position="inside">
+                    <button name="payment_print" class="oe_highlight" type="object" states="paid" string="Print Receipt"/>
+                </xpath>
+
+                <xpath expr="//field[@name='cash_rounding_id']" position="after">
+                        <field name="origin" readonly="1" />
+                        
+                        <div>
+                            <label string="重印:"/>
+                            <label string="是" attrs="{'invisible': [('first_print','&lt;',1)]}"/>
+                            <label string="否" attrs="{'invisible': [('first_print','&gt;=',1)]}"/>
+                            <field name="first_print" invisible="1" />
+                        </div>
+                        <field name="money_extra"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+    
+</odoo>

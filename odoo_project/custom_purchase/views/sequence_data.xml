@@ -1,0 +1,13 @@
+<odoo>
+    <record model="ir.sequence" id="customer_sequence">
+        <field name="name">Purchase Number</field>
+        <field name="code">custom.purchase.order</field>
+        <field name="implementation">standard</field>
+        <field name="active">True</field>
+        <field name="prefix">PUR NO</field>
+        <field name="use_date_range">False</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="number_next_actual">1</field>
+    </record>
+</odoo>

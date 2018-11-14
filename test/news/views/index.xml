@@ -1,0 +1,77 @@
+<odoo>
+    <data>
+        <template id="index">
+            <title>News | 首页</title>
+            <div class="container-fluid">
+                <t t-call="news.header"/>
+                <div style="padding-left:5%;padding-right:5%">
+                    <div class="row">
+                        <t t-call="news.sidebar"/>
+                        <div class="col-md-9">
+                            <div class="content" style="margin-top:50px">
+                                <t t-foreach="news" t-as="new">
+                                    <a t-attf-href="/news/detail/{{new['id']}}">
+                                        <h3 t-esc="new['title']"/>
+                                    </a>
+                                    <p>
+                                        <t t-esc="new['content'][:80]+'...'"/>
+                                    </p>
+                                    <br/>
+                                </t>
+                            </div>
+
+                            <nav aria-label="Page navigation">
+                                <ul class="pagination">
+                                    <t t-if="page">
+                                        <li>
+                                            <t t-if="keyword">
+                                                <a t-attf-href="?page={{prev}}&amp;keyword={{keyword}}"
+                                                   aria-label="Previous">
+                                                    <span aria-hidden="true">&lt;&lt;</span>
+                                                </a>
+                                            </t>
+                                            <t t-if="not keyword">
+                                                <a t-attf-href="?page={{prev}}" aria-label="Previous">
+                                                    <span aria-hidden="true">&lt;&lt;</span>
+                                                </a>
+                                            </t>
+                                        </li>
+                                        <t t-foreach="page_range" t-as="page">
+                                            <li>
+                                                <t t-if="keyword">
+                                                    <a t-attf-href="?page={{page}}&amp;keyword={{keyword}}">
+                                                        <t t-esc="page"/>
+                                                    </a>
+                                                </t>
+                                                <t t-if="not keyword">
+                                                    <a t-attf-href="?page={{page}}">
+                                                        <t t-esc="page"/>
+                                                    </a>
+                                                </t>
+                                            </li>
+                                        </t>
+                                        <li>
+                                            <t t-if="keyword">
+                                                <a t-attf-href="?page={{next}}&amp;keyword={{keyword}}"
+                                                   aria-label="Next">
+                                                    <span aria-hidden="true">&gt;&gt;</span>
+                                                </a>
+                                            </t>
+                                            <t t-if="not keyword">
+                                                <a t-attf-href="?page={{next}}" aria-label="Next">
+                                                    <span aria-hidden="true">&gt;&gt;</span>
+                                                </a>
+                                            </t>
+                                        </li>
+                                    </t>
+                                </ul>
+                            </nav>
+
+                        </div>
+                    </div>
+                </div>
+                <t t-call="news.footer"/>
+            </div>
+        </template>
+    </data>
+</odoo>

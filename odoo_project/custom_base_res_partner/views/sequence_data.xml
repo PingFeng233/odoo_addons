@@ -1,0 +1,25 @@
+<odoo>
+    <record model="ir.sequence" id="customer_sequence">
+        <field name="name">Customer Number</field>
+        <field name="code">res.partner.customer</field>
+        <field name="implementation">standard</field>
+        <field name="active">True</field>
+        <field name="prefix">Customer No</field>
+        <field name="use_date_range">False</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="number_next_actual">1</field>
+    </record>
+
+    <record model="ir.sequence" id="vendor_sequence">
+        <field name="name">Vendor Number</field>
+        <field name="code">res.partner.vendor</field>
+        <field name="implementation">standard</field>
+        <field name="active">True</field>
+        <field name="prefix">Vendor No</field>
+        <field name="use_date_range">False</field>
+        <field name="padding">5</field>
+        <field name="number_increment">1</field>
+        <field name="number_next_actual">1</field>
+    </record>
+</odoo>

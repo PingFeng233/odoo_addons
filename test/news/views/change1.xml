@@ -1,0 +1,74 @@
+<odoo>
+    <data>
+        <template id="change">
+            <!--<div class="contain" style="height:100%;position:relative">-->
+            <title>News | 修改</title>
+            <div class="container-fluid">
+                <div class="page_content">
+                    <t t-call="news.header"/>
+                    <div style="padding-left:5%;padding-right:5%">
+                        <div class="row">
+                            <t t-call="news.sidebar"/>
+                            <div class="col-md-9">
+                                <div class="content" style="margin-top:50px">
+                                    <form action="" method="post">
+                                        <p>
+                                            <label name="title">标题</label>
+                                            <input type="text" id="title" name="title" t-att-value="new.title"/>
+                                        </p>
+                                        <p>
+                                            <label name="content">内容</label>
+                                            <input type="text" id="content" name="content" t-att-value="new.content"/>
+                                        </p>
+                                        <p>
+                                            <input type="submit" value="修改"/>
+                                        </p>
+                                        <p>
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        </p>
+                                    </form>
+                                </div>
+
+                                <div class="content" style="margin-top:50px">
+                                    <form action="/news/change" method="post" enctype='multipart/form-data'>
+                                        <p>
+                                            <label name="title" style="width:100%">标题</label>
+                                            <input type="text" id="title" name="title" t-att-value="new.title"/>
+                                        </p>
+                                        <p>
+                                            <label name="content">内容</label>
+                                            <div id="content" name="content" style="width:100%;">
+                                                <!--<t t-esc="new.content"/>-->
+                                                <script id="editor2" type="text/plain"
+                                                        style="width:1024px;height:500px;"></script>
+                                                <script type="text/javascript">
+                                                    var ue = UE.getEditor('editor2', {
+                                                    serverUrl: "/news/upload/"
+                                                    });
+
+                                                    var data=ue.getContent();
+
+                                                    $.post("/news/change",
+                                                    {"content":data
+                                                    });
+                                                </script>
+                                            </div>
+                                        </p>
+                                        <p>
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        </p>
+                                        <p>
+                                            <input type="submit" value="提交"/>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="news.footer"/>
+            </div>
+            <!--</div>-->
+        </template>
+    </data>
+</odoo>

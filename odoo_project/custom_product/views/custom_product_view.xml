@@ -1,0 +1,163 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record id="view_product_custom_form" model="ir.ui.view">
+            <field name="name">product.template.common.form</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/sheet/notebook/page/group" position="inside">
+                    <group>
+                        <field name="custom_is_materia"/>
+                    </group>
+                    <group>
+                        <field name="custom_is_product"/>
+                    </group>
+                    <!--                <group>
+                                         <field name="custom_name_in_chi"/>
+                                         <field name="custom_description_in_chi"/>
+                                    </group> -->
+                    <group>
+                        <field name="custom_short_description"/>
+                        <field name="custom_description"/>
+                    </group>
+                    <group>
+                        <field name="custom_paper_no"
+                               attrs="{'invisible':[('custom_is_materia','=',True),('custom_is_product','=',False)]}"/>
+                        <field name="custom_brand"
+                               attrs="{'invisible':[('custom_is_materia','=',True),('custom_is_product','=',False)]}"/>
+                    </group>
+                    <group>
+                        <field name="custom_season"
+                               attrs="{'invisible':[('custom_is_materia','=',True),('custom_is_product','=',False)]}"/>
+                    </group>
+                    <group>
+                        <field name="custom_in_charge"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_material_type"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_ingredient"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_weight"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_region"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_remark"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                    </group>
+                    <group>
+                        <field name="custom_user_status"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_method"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_tissue_yarn_count"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_postprocessing1"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                        <field name="custom_postprocessing2"
+                               attrs="{'invisible':[('custom_is_materia','=',False),('custom_is_product','=',True)]}"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="action_custom_brand">
+            <field name="name">Brand</field>
+            <field name="res_model">custom_brand</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_season">
+            <field name="name">Season</field>
+            <field name="res_model">custom_season</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_material_type">
+            <field name="name">Material Type</field>
+            <field name="res_model">custom_material_type</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_ingredient">
+            <field name="name">Ingredient(成份)</field>
+            <field name="res_model">custom_ingredient</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_status">
+            <field name="name">Status</field>
+            <field name="res_model">custom_status</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_user_status">
+            <field name="name">User Status</field>
+            <field name="res_model">custom_user_status</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_method">
+            <field name="name">Method</field>
+            <field name="res_model">custom_method</field>
+        </record>
+        <record model="ir.actions.act_window" id="action_custom_tissue_yarn_count">
+            <field name="name">組織/紗支數</field>
+            <field name="res_model">custom_tissue_yarn_count</field>
+        </record>
+
+        <menuitem name="Brand" id="custom_product.custom_brand" parent="stock.menu_stock_config_settings"
+                  action="action_custom_brand"/>
+        <menuitem name="Season" id="custom_product.custom_season" parent="stock.menu_stock_config_settings"
+                  action="action_custom_season"/>
+        <menuitem name="Material Type" id="custom_product.custom_material_type"
+                  parent="stock.menu_stock_config_settings" action="action_custom_material_type"/>
+        <menuitem name="Ingredient(成份)" id="custom_product.custom_ingredient" parent="stock.menu_stock_config_settings"
+                  action="action_custom_ingredient"/>
+        <menuitem name="Status" id="custom_product.custom_status" parent="stock.menu_stock_config_settings"
+                  action="action_custom_status"/>
+        <menuitem name="User Status" id="custom_product.custom_user_status" parent="stock.menu_stock_config_settings"
+                  action="action_custom_user_status"/>
+        <menuitem name="Method" id="custom_product.custom_method" parent="stock.menu_stock_config_settings"
+                  action="action_custom_method"/>
+        <menuitem name="組織/紗支數" id="custom_product.custom_tissue_yarn_count" parent="stock.menu_stock_config_settings"
+                  action="action_custom_tissue_yarn_count"/>
+
+        <record id="view_product_supplierinfo_custom_form_view" model="ir.ui.view">
+            <field name="name">product.supplierinfo.custom.form.view</field>
+            <field name="model">product.supplierinfo</field>
+            <field name="priority">99</field>
+            <field name="inherit_id" ref="product.product_supplierinfo_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="/form/group" position="inside">
+                    <group>
+                        <field name="custom_buik_lead_time"/>
+                        <field name="custom_wastage"/>
+                        <field name="custom_season"/>
+                        <field name="custom_bulk_max_order"/>
+                        <field name="custom_bulk_min_order"/>
+                        <field name="custom_remark"/>
+                    </group>
+                    <group>
+                        <field name="custom_sample_lead_time"/>
+                        <field name="custom_test_result"/>
+                        <field name="custom_sample_max_order"/>
+                        <field name="custom_sample_min_order"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!--<record id="custom_product_template_only_form_view" model="ir.ui.view">-->
+            <!--<field name="name">custom_product_template_only_form_view</field>-->
+            <!--<field name="model">product.template</field>-->
+            <!--<field name="inherit_id" ref="product.product_template_only_form_view"/>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<xpath expr="//field[@name='categ_id']" position="replace">-->
+                    <!--<field name="default_code"/>-->
+                    <!--<field name="barcode"/>-->
+                <!--</xpath>-->
+            <!--</field>-->
+        <!--</record>-->
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="action_custom_test_result">
+            <field name="name">Test Result</field>
+            <field name="res_model">custom_test_result</field>
+        </record>
+
+        <menuitem name="Test Result" id="custom_product.custom_test_result" parent="stock.menu_stock_config_settings"
+                  action="action_custom_test_result"/>
+
+    </data>
+</odoo>

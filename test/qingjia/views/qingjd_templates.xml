@@ -1,0 +1,66 @@
+<odoo>
+    <data>
+
+        <!--视图动作-->
+        <record id="qingjia" model="ir.actions.act_window">
+            <field name="name">请假单</field>
+            <field name="res_model">qingjia.qingjd</field>
+            <field name="view_model">tree,form</field>
+        </record>
+
+        <!--tree视图-->
+        <record id="view_tree_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单列表</field>
+            <field name="model">qingjia.qingjd</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"></field>
+                    <field name="days"></field>
+                    <field name="startdate"></field>
+                    <field name="reason"></field>
+                </tree>
+            </field>
+        </record>
+
+        <!--form视图-->
+        <record id="view_form_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单列表</field>
+            <field name="model">qingjia.qingjd</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group name="group_top" string="请假单">
+                            <field name="name"></field>
+                        </group>
+                        <group name="group_content" string="内容">
+                            <field name="days"></field>
+                            <field name="startdate"></field>
+                            <field name="reason"></field>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--搜索视图-->
+
+        <!--<record id="view_search_qingjia" model="ir.ui.view">-->
+        <!--<field name="name">搜索</field>-->
+        <!--<field name="model">qingjia.qingjd</field>-->
+        <!--<field name="acrh" type="xml">-->
+        <!--<search>-->
+        <!--<field name="name"></field>-->
+        <!--&lt;!&ndash;<field name="reason"></field>&ndash;&gt;-->
+        <!--</search>-->
+        <!--</field>-->
+        <!--</record>-->
+
+        <!--菜单-->
+        <menuitem name="请假" id="menu_qj"></menuitem>
+        <menuitem name="请假单" id="menu_qjd" parent="menu_qj"></menuitem>
+        <menuitem name="1" id="menu_qjd_qjd1" parent="menu_qjd" action="qingjia"></menuitem>
+        <menuitem name="2" id="menu_qjd_qjd2" parent="menu_qjd" action="qingjia"></menuitem>
+        <menuitem name="3" id="menu_qjd_qjd3" parent="menu_qjd" action="qingjia"></menuitem>
+
+    </data>
+</odoo>

@@ -1,0 +1,76 @@
+<odoo>
+    <data>
+        <!--动作视图-->
+        <record id="action_todotask" model="ir.actions.act_window">
+            <field name="name">To Do Task</field>
+            <field name="res_model">todo.task</field>
+            <field name="view_model">tree,form,filter</field>
+        </record>
+
+
+        <!--树视图-->
+        <record id="view_tree_task" model="ir.ui.view">
+            <field name="name">TodoTask</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <tree colors="gray:is_done==True">
+                    <field name="name"></field>
+                    <field name="is_done"></field>
+                    <field name="active"></field>
+                </tree>
+            </field>
+
+        </record>
+
+        <!--表单视图-->
+        <record id="view_form_task" model="ir.ui.view">
+            <field name="name">TodoTask</field>
+            <field name="model">todo.task</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="do_toggle_done" type="object"
+                                string="Toggle Done" class="oe_highlight"></button>
+                        <button name="do_clear_done" type="object"
+                                string="Clear All Done"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group id="group_left">
+                                <field name="name"></field>
+                            </group>
+                            <group id="group_right">
+                                <field name="is_done"></field>
+                                <field name="active" readonly="1"></field>
+                            </group>
+                        </group>
+
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--filter视图-->
+        <!--<record id="view_filter_task" model="ir.ui.view">-->
+            <!--<field name="name">Todo Task</field>-->
+            <!--<field name="model">todo.task</field>-->
+            <!--<field name="arch" type="xml">-->
+                <!--<search>-->
+                    <!--<field name="name"></field>-->
+                    <!--<filter string="Not Done"-->
+                            <!--domain="[('is_done','=',False)]"></filter>-->
+                    <!--<filter string="Done"-->
+                            <!--domain="[('is_done','!=',False)]"></filter>-->
+                <!--</search>-->
+            <!--</field>-->
+        <!--</record>-->
+
+
+        <!--菜单-->
+        <!--<menuitem id="memu_task" name="task" parent="mail.mail_feeds"-->
+        <!--sequence="20" action="action_todotask"></menuitem>-->
+        <menuitem id="menu_todo" name="task"></menuitem>
+        <menuitem id="menu_task" name="todotask" parent="menu_todo" action="action_todotask"></menuitem>
+    </data>
+</odoo>

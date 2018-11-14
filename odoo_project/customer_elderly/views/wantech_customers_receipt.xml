@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="wantech_customers_receipt" inherit_id="account_reports.template_followup_report">
+        <xpath expr="//span[@id='action-buttons']/button[1]" position="before">
+            <button class="btn btn-primary followup-letter" style="margin-right:3px;" action="print_followup2" t-att-data-partner="partner.id">PRINT REPORT</button>
+        </xpath>
+    </template>
+    <template id="main_template2">
+        <div class='o_account_reports_body'>
+            <div class="container o_account_reports_page o_account_reports_no_print" style="padding-top:60px;">
+                <div class="table-responsive">
+                    <table width="100%" class="o_account_reports_table">
+                        <thead>
+                            <tr>
+                                <t t-foreach="lines.get('columns_header')" t-as="column_header">
+                                    <th>
+                                        <t t-raw="column_header.get('name')"/>
+                                    </th>
+                                </t>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-if="lines.get('lines')">
+                                <t t-foreach="lines['lines']" t-as="line">
+                                    <tr>
+                                        <t t-foreach="line.get('columns')" t-as="column">
+                                            <td>
+                                                <span class="o_account_report_column_value">
+                                                    <t t-raw="column.get('name')"/>
+                                                </span>
+                                            </td>
+                                        </t>
+                                    </tr>
+                                </t>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="js_account_report_footnotes"/>
+            </div>
+        </div>
+    </template>
+    
+</odoo>

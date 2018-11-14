@@ -1,0 +1,90 @@
+<odoo>
+    <data>
+        <report
+                id="action_bnt_report"
+                string="测试报表"
+                model="bnt.bnt"
+                report_type="qweb-html"
+                name="bnt.custom_report"
+                file="bnt.custom_report"
+        />
+
+        <template id="custom_report">
+            <t t-call="web.html_container">
+                <t t-call="web.external_layout">
+                    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css"
+                          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+                          crossorigin="anonymous"/>
+                    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+                          integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp"
+                          crossorigin="anonymous"/>
+                    <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"/>
+                    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"
+                            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+                            crossorigin="anonymous"/>
+
+                    <form action="/bnt/print_excel/" mothod="post">
+                        <input type="hidden" id="data" name="data" t-attf-value="{{lines}}"/>
+                        <input type="hidden" id="token" name="token"/>
+                        <input type="month" id="month" name="month"/>
+                        <input type="submit" value="导出excel"/>
+                    </form>
+
+                    <script>
+                        $(function(){
+                        var $token = new Date().getTime();
+                        $("#token").val($token);
+                        })
+                    </script>
+
+                    <div class="page">
+                        <h2>测试报表</h2>
+                        <br/>
+                        <div class="container">
+                            <table class="table table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>
+                                            <t t-esc="data['rows'][0]['title']"/>
+                                        </th>
+                                        <t t-foreach="data['rows'][0]['values']" t-as="row">
+                                            <th>
+                                                <t t-esc="row['value']"/>
+                                            </th>
+                                        </t>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <t t-foreach="data['rows'][1:]" t-as="row">
+                                        <tr>
+                                            <td>
+                                                <t t-esc="row['title']"/>
+                                            </td>
+                                            <t t-foreach="row['values']" t-as="key">
+                                                <td>
+                                                    <t t-esc="key['value']"/>
+                                                </td>
+                                            </t>
+                                        </tr>
+                                    </t>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </t>
+            </t>
+        </template>
+
+        <record id="action_account_report_gt2" model="ir.actions.client">
+            <field name="name">测试报表</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'report.bnt.custom_report'}"/>
+        </record>
+
+
+        <menuitem name="发票CCC" id="menu_custom_base_account_invoice" parent="account.account_reports_management_menu"
+                  action="action_bnt_report" sequence="5"/>
+        <menuitem name="发票AAA" id="menu_custom_base_account_invoice2" parent="account.account_reports_management_menu"
+                  action="action_account_report_gt2" sequence="99"/>
+    </data>
+</odoo>

@@ -1,0 +1,37 @@
+<odoo>
+    <data>
+        <template id="detail">
+            <title>News | 新闻</title>
+            <div class="container-fluid">
+                <div class="page_content">
+                    <t t-call="news.header"/>
+                    <div style="padding-left:5%;padding-right:5%">
+                        <div class="content" style="margin-top:50px">
+                            <div class="row">
+                                <t t-call="news.sidebar"/>
+                                <div class="col-md-9">
+                                    <h3 style="text-align:center">
+                                        <t t-esc="new.title"/>
+                                    </h3>
+                                    <p>
+                                        <div id="new_content">
+
+                                        </div>
+                                    </p>
+                                    <input type="hidden" id="safe_content" t-attf-value="{{new.content}}"/>
+                                    <script>
+                                        $(document).ready(function(){
+                                        var data=$('#safe_content').val();
+                                        $('#new_content').html(data);
+                                        });
+                                    </script>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <t t-call="news.footer"/>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

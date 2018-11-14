@@ -1,0 +1,99 @@
+<odoo>
+    <data>
+        <template id="change">
+            <!--<div class="contain" style="height:100%;position:relative">-->
+            <title>News | 修改</title>
+            <div class="container-fluid">
+                <div class="page_content">
+                    <t t-call="news.header"/>
+                    <t t-call="news.ueditor_js"/>
+                    <div style="padding-left:5%;padding-right:5%">
+                        <div class="row">
+                            <t t-call="news.sidebar"/>
+                            <div class="col-md-9">
+                                <div class="content" style="margin-top:50px">
+                                    <form t-attf-action="/news/change/{{new.id}}" method="post"
+                                          enctype='multipart/form-data'>
+                                        <p>
+                                            <label name="title" style="width:100%">标题</label>
+                                            <input type="text" id="title" name="title" t-att-value="new.title"/>
+                                        </p>
+                                        <p>
+                                            <label for="category">类别</label>
+                                            <select name="category" id="category">
+                                                <option>选择</option>
+                                                <t t-if="categories">
+                                                    <t t-foreach="categories" t-as="cate">
+                                                        <t t-if="cate.id == new.category.id">
+                                                            <option t-att-value="cate.id" selected="selected">
+                                                                <t t-esc="cate.name"/>
+                                                            </option>
+                                                        </t>
+                                                        <t t-if="cate.id != new.category">
+                                                            <option t-att-value="cate.id">
+                                                                <t t-esc="cate.name"/>
+                                                            </option>
+                                                        </t>
+
+                                                    </t>
+                                                </t>
+                                                <option value="more">
+                                                    更多
+                                                </option>
+                                            </select>
+
+                                            <!--点击更多新增类别-->
+                                            <script>
+                                                $("#category").change(function(){
+                                                var url = $("#category").val();
+                                                if (url == 'more') {
+                                                $("#edui1").css({
+                                                "position": "fixed !important",
+                                                "filter": "alpha(opacity=65)",
+                                                "z-index": "110",
+                                                "position": "absolute"});
+
+                                                show();
+                                                $("#content_sub").css('margin-top','610px');}
+                                                })
+                                            </script>
+                                        </p>
+                                        <input type="hidden" id="safe_content" t-att-value="new.content"/>
+                                        <input type="hidden" id="id" t-att-value="new.id"/>
+                                        <p>
+                                            <label name="content">内容</label>
+                                            <div id="content" name="content" style="width:100%;">
+                                                <script id="editor" type="text/plain"
+                                                        style="width:1024px;height:500px;"></script>
+
+                                                <script type="text/javascript">
+                                                    var ue = UE.getEditor('editor');
+                                                    var cont = document.getElementById("safe_content").value;
+                                                    function setContent(isAppendTo) {
+                                                    UE.getEditor('editor').setContent(cont, isAppendTo);
+                                                    };
+                                                    window.onload=function(){
+                                                    setContent(true);
+                                                    };
+                                                </script>
+
+                                            </div>
+                                        </p>
+                                        <p>
+                                            <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        </p>
+                                        <p>
+                                            <input type="submit" value="修改"/>
+                                        </p>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <t t-call="news.footer"/>
+            </div>
+            <!--</div>-->
+        </template>
+    </data>
+</odoo>

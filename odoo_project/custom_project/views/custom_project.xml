@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="custom_project_view" model="ir.ui.view">
+            <field name="name">project.custom_project_view</field>
+            <field name="model">project.project</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="project.edit_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='settings']/group[1]" position="replace">
+                    <group>
+                        <field name="user_id" string="Project Manager"
+                               attrs="{'readonly':[('active','=',False)]}"/>
+                        <field name="project_status"/>
+                        <field name="subtask_project_id" groups="project.group_subtask_project"/>
+                        <field name="privacy_visibility" widget="radio"/>
+                        <field name="partner_id" string="Customer"/>
+                    </group>
+                </xpath>
+
+                <xpath expr="//page[@name='settings']/group[2]/group[1]/field" position="after">
+                    <field name="schedule_complete_date"/>
+                    <field name="planned_hours"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="custom_project_kanban" model="ir.ui.view">
+            <field name="name">project.custom_project_kanban</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project_kanban"/>
+            <field name="arch" type="xml">
+                <xpath expr='.' position="attributes">
+                    <attribute name="default_group_by">project_status</attribute>
+                </xpath>
+
+                <xpath expr="//div[@class='o_kanban_card_content']" position="inside">
+                    <p>
+                        <span>Schedule Complete Date:
+                            <field name="schedule_complete_date"/>
+                        </span>
+                    </p>
+                    <p>
+                        <span>
+                            <field name="real_time"/>/
+                            <field name="planned_hours"/>
+                        </span>
+                    </p>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="custom_view_project" model="ir.ui.view">
+            <field name="name">custom_view_project.tree</field>
+            <field name="model">project.project</field>
+            <field name="inherit_id" ref="project.view_project"/>
+            <field name="arch" type="xml">
+                <xpath expr="." position="attributes">
+                    <attribute name="decoration-bf">message_needaction==True</attribute>
+                    <attribute name="decoration-danger">planned_hours and (planned_hours&lt;real_time)</attribute>
+                </xpath>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="planned_hours"/>
+                    <field name="real_time"/>
+                </xpath>
+            </field>
+        </record>
+
+
+        <record id="custom_project_status_action" model="ir.actions.act_window">
+            <field name="name">Status</field>
+            <field name="res_model">custom_project_status</field>
+            <field name="view_type">form</field>
+        </record>
+
+        <menuitem action="custom_project_status_action" id="menu_project_status_act"
+                  parent="project.menu_project_config"/>
+
+    </data>
+</odoo>

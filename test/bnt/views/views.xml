@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+    <!--
+    <record model="ir.ui.view" id="bnt.list">
+      <field name="name">bnt list</field>
+      <field name="model">bnt.bnt</field>
+      <field name="arch" type="xml">
+        <tree>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </tree>
+      </field>
+    </record>
+    -->
+
+    <!-- actions opening views on models -->
+    <!--
+    <record model="ir.actions.act_window" id="bnt.action_window">
+      <field name="name">bnt window</field>
+      <field name="res_model">bnt.bnt</field>
+      <field name="view_mode">tree,form</field>
+    </record>
+    -->
+
+    <!-- server action to the one above -->
+    <!--
+    <record model="ir.actions.server" id="bnt.action_server">
+      <field name="name">bnt server</field>
+      <field name="model_id" ref="model_bnt_bnt"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "tree,form",
+          "res_model": self._name,
+        }
+      </field>
+    </record>
+    -->
+
+    <!-- Top menu item -->
+    <!--
+    <menuitem name="bnt" id="bnt.menu_root"/>
+    -->
+    <!-- menu categories -->
+    <!--
+    <menuitem name="Menu 1" id="bnt.menu_1" parent="bnt.menu_root"/>
+    <menuitem name="Menu 2" id="bnt.menu_2" parent="bnt.menu_root"/>
+    -->
+    <!-- actions -->
+    <!--
+    <menuitem name="List" id="bnt.menu_1_list" parent="bnt.menu_1"
+              action="bnt.action_window"/>
+    <menuitem name="Server to list" id="bnt" parent="bnt.menu_2"
+              action="bnt.action_server"/>
+    -->
+  </data>
+</odoo>

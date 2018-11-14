@@ -1,0 +1,162 @@
+<odoo>
+    <data>
+        <!-- tree视图 -->
+        <record id="view_tree_qingjia_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单列表</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="manager"/>
+                    <field name="days"/>
+                    <field name="startdate"/>
+                    <!--<field name="uid"/>-->
+                    <field name="parent_id"/>
+                    <field name="state"/>
+                    <field name="create_uid" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <record id="view_tree_qingjia_qingjiadan2" model="ir.ui.view">
+            <field name="name">请假单列表2</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="days"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form视图 -->
+        <record id="view_form_qingjia_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <header>
+                        <button name="do_confirm" states="draft" type="object" string="提交" class="btn-primary"
+                                attrs="{'invisible': [('is_owner','=',False)]}"/>
+                        <!--attrs="{'invisible':'1'}"/>-->
+                        <!--invisible='1'/>-->
+
+                        <!--attrs="{'invisible': ['|',('state','!=','draft'),('create_uid','!=',user.id)]}"/>-->
+                        <button name="do_complete" states="confirm,reject" type="object" string="审批"/>
+                        <button name="do_reject" states="confirm,reject" type="object" string="拒绝"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,complete"/>
+                        <!--<field name="state" widget="statusbar" statusbar_visible="confirm,complete,draft"/>-->
+                    </header>
+
+                    <sheet>
+                        <group name="group_top" string="请假单">
+                            <field name="name"/>
+                            <field name="manager"/>
+                            <field name="days"/>
+                            <field name="startdate"/>
+                            <field name="reason"/>
+                            <field name="is_owner" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--calendar视图-->
+        <record id="view_calendar_qingjia_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单calendar</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <calendar string="calendar qingjia"
+                          date_start="startdate"
+                          date_delay="days">
+                    <field name="name"/>
+                </calendar>
+            </field>
+        </record>
+
+
+        <!--&lt;!&ndash;gantt视图&ndash;&gt;-->
+        <!--<record id="view_gantt_qingjia_qingjiadan" model="ir.ui.view">-->
+        <!--<field name="name">请假单Gantt</field>-->
+        <!--<field name="model">qingjia.qingjiadan</field>-->
+        <!--<field name="arch" type="xml">-->
+        <!--<gantt string="请假gantt" date_start="startdate"-->
+        <!--date_delay="days">-->
+        <!--<field name="name"/>-->
+        <!--</gantt>-->
+        <!--</field>-->
+        <!--</record>-->
+
+        <!--kanban视图-->
+        <record id="view_kanban_qingjia_qingjiadan" model="ir.ui.view">
+            <field name="name">请假kanban</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <templates>
+                        <field name="name"/>
+                        <field name="days"/>
+                        <t t-name="kanban-box">
+                            <div>
+
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+
+        <!-- 视图动作 -->
+        <!--<act_window id="action_qingjia_qingjiadan"-->
+        <!--name="请假单"-->
+        <!--res_model="qingjia.qingjiadan"-->
+        <!--view_mode="tree,form"/>-->
+
+        <record id="action_qingjia_qingjiadan" model="ir.actions.act_window">
+            <field name="name">请假单</field>
+            <field name="res_model">qingjia.qingjiadan</field>
+            <field name="view_mode">tree,form,calendar,kanban</field>
+            <!--<field name="view_id" ref="view_tree_qingjia_qingjiadan"/>-->
+            <!--<field name="act_window_id" ref="action_qingjia_qingjiadan"/>-->
+        </record>
+
+
+        <record id="action_qingjia_jingjiadan_tree2" model="ir.actions.act_window">
+            <field name="name">请假单2</field>
+            <field name="res_model">qingjia.qingjiadan</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_tree_qingjia_qingjiadan2"/>
+        </record>
+
+        <!-- 顶级菜单 -->
+        <menuitem name="请假" id="menu_qingjia"/>
+
+        <!--一级菜单-->
+        <menuitem name="请假单" id="menu_qingjiadan" parent="menu_qingjia"/>
+
+        <!-- 二级菜单 -->
+        <menuitem name="请假单1" id="menu_qingjia_qingjiadan" parent="menu_qingjiadan"
+                  action="action_qingjia_qingjiadan"/>
+        <menuitem name="请假单2" id="menu_qingjia_qingjiadan2" parent="menu_qingjiadan"
+                  action="action_qingjia_jingjiadan_tree2"/>
+
+        <!--record规则-->
+        <record id="rule_user_qingjia_qingjiadan" model="ir.rule">
+            <field name="name">请假单管理</field>
+            <field name="model_id" ref="model_qingjia_qingjiadan"/>
+            <!--<field name="domain_force">-->
+            <!--['|','|',('create_uid.parent_id','=',False),('create_uid','=',user.id),('create_uid','in',[g.id for-->
+            <!--g in user.child_ids.parent_id])]-->
+            <!--</field>-->
+
+            <field name="domain_force">
+                ['|',('parent_id','=',user.id),('create_uid','=',user.id)]
+            </field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

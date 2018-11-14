@@ -1,0 +1,81 @@
+<odoo>
+    <data>
+        <!-- tree视图 -->
+        <record id="view_tree_qingjia_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单列表</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="manager"/>
+                    <field name="days"/>
+                    <field name="startdate"/>
+                    <field name="parent_id"/>
+                    <field name="state"/>
+                    <field name="create_uid" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- form视图 -->
+        <record id="view_form_qingjia_qingjiadan" model="ir.ui.view">
+            <field name="name">请假单</field>
+            <field name="model">qingjia.qingjiadan</field>
+            <field name="arch" type="xml">
+                <form>
+
+                    <header>
+                        <button name="do_confirm" type="object" string="提交"
+                                attrs="{'invisible': ['|',('is_owner','=',False),('state','not in',['draft'])]}"/>
+                        <button name="do_complete" type="object" string="审批"
+                                attrs="{'invisible': ['|',('is_manager','!=',True),('state','not in',['confirm','reject'])]}"/>
+                        <button name="do_reject" type="object" string="拒绝"
+                                attrs="{'invisible': ['|',('is_manager','!=',True),('state','not in',['confirm','reject'])]}"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirm,complete"/>
+                    </header>
+
+                    <sheet>
+                        <group name="group_top" string="请假单">
+                            <field name="name"/>
+                            <field name="manager"/>
+                            <field name="days"/>
+                            <field name="startdate"/>
+                            <field name="reason"/>
+                            <field name="is_owner" invisible="1"/>
+                            <field name="is_manager" invisible="1"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+
+        <record id="action_qingjia_qingjiadan" model="ir.actions.act_window">
+            <field name="name">请假单</field>
+            <field name="res_model">qingjia.qingjiadan</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+
+        <!-- 顶级菜单 -->
+        <menuitem name="请假" id="menu_qingjia"/>
+
+        <!--一级菜单-->
+        <menuitem name="请假单" id="menu_qingjiadan" parent="menu_qingjia"/>
+
+        <!-- 二级菜单 -->
+        <menuitem name="请假单1" id="menu_qingjia_qingjiadan" parent="menu_qingjiadan"
+                  action="action_qingjia_qingjiadan"/>
+
+        <!--record规则-->
+        <record id="rule_user_qingjia_qingjiadan" model="ir.rule">
+            <field name="name">请假单管理</field>
+            <field name="model_id" ref="model_qingjia_qingjiadan"/>
+            <field name="domain_force">
+                ['|',('parent_id','=',user.id),('create_uid','=',user.id)]
+            </field>
+            <field name="groups" eval="[(4,ref('base.group_user'))]"/>
+        </record>
+
+    </data>
+</odoo>

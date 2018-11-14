@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="action_custom_invoice_report" model="ir.actions.client">
+            <field name="name">零用現金報表</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'report.custom_invoice_report.custom_report'}"/>
+        </record>
+
+        <menuitem name="零用現金報表" id="menu_custom_invoice_report" parent="account.account_reports_management_menu"
+                  action="action_custom_invoice_report" sequence="99"/>
+
+        <record id="action_custom_invoice_rec_report" model="ir.actions.client">
+            <field name="name">每月收賬報表</field>
+            <field name="tag">account_report</field>
+            <field name="context" eval="{'model': 'report.custom_invoice_rec_report.custom_report'}"/>
+        </record>
+
+        <menuitem name="每月收賬報表" id="menu_custom_invoice_rec_report" parent="account.account_reports_management_menu"
+                  action="action_custom_invoice_rec_report" sequence="98"/>
+
+        <record id="custom_product_category_form" model="ir.ui.view">
+            <field name="name">custom_product_category_form</field>
+            <field name="model">product.category</field>
+            <field name="inherit_id" ref="product.product_category_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='parent_id']" position="after">
+                    <field name="sequence"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

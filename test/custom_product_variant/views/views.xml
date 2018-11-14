@@ -1,0 +1,27 @@
+<odoo>
+    <data>
+
+        <record id="product_template_variant_form_view" model="ir.ui.view">
+            <field name="name">product.template.product.form</field>
+            <field name="model">product.template</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="product.product_template_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//header/button" position="after">
+                    <button string="保存" name="product_attribute_value_action" type="action"/>
+                    <scrpit>
+
+                    </scrpit>
+                </xpath>
+            </field>
+        </record>
+
+        <!--<record id="product.template.variant_action" model="ir.actions.act_window">-->
+            <!--<field name="name">variant_action</field>-->
+            <!--<field name="res_model">product.template</field>-->
+            <!--<field name="view_mode">form</field>-->
+            <!--<field name="view_id">product.template.product.tree</field>-->
+        <!--</record>-->
+
+    </data>
+</odoo>

@@ -1,0 +1,68 @@
+<odoo>
+    <data>
+        <!--视图动作-->
+        <act_window id="action_qingjia_qingjd"
+                    name=" 请假单"
+                    res_model="qingjia.qingjd"
+                    view_mode="tree,form"/>
+
+        <!--表单视图-->
+        <record id="qingjia_qingjd_form" model="ir.ui.view">
+            <field name="name">qing jia dan form</field>
+            <field name="model">qingjia.qingjd</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="btn_confirm" type="workflow" states="draft"
+                                string=" 发送" class="oe_highlight"/>
+                        <button name="btn_accept" type="workflow" states="confirmed"
+                                string=" 批准" class="oe_highlight"/>
+                        <button name="btn_reject" type="workflow" states="accepted"
+                                string=" 拒绝" class="oe_highlight"/>
+                        <field name="state" widget="statusbar" statusbar_visible="draft,confirmed,accepted,rejected"
+                               class="oe_highlight" type="workflow"/>
+                    </header>
+
+                    <sheet>
+                        <group name="group_top" string=" 请假单">
+                            <group name="group_left">
+                                <field name="name"/>
+                                <field name="beginning"/>
+                            </group>
+
+                            <group name="group_right">
+                                <field name="manager"/>
+                                <field name="ending"/>
+                            </group>
+                        </group>
+
+                        <group name="group_below">
+                            <field name="reason"/>
+                        </group>
+
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!--tree视图-->
+        <record id="qingjia_qingjd_tree" model="ir.ui.view">
+            <field name="name">qing jia dan tree</field>
+            <field name="model">qingjia.qingjd</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="name"/>
+                    <field name="beginning"/>
+                    <field name="ending"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+
+        <!--菜单-->
+        <menuitem id="menu_qingjia" name=" 请假" sequence="0"></menuitem>
+        <menuitem id="menu_qingjia_qingjiadan" name=" 请假单" parent="menu_qingjia"></menuitem>
+        <menuitem id="menu_qingjia_qingjiadan_qingjiadan" parent="menu_qingjia_qingjiadan"
+                  action="action_qingjia_qingjd"></menuitem>
+    </data>
+</odoo>

@@ -1,0 +1,137 @@
+<odoo>
+    <data>
+        <!-- explicit list view definition -->
+        <record id="view_partner_custom_form" model="ir.ui.view">
+            <field name="name">res.partner.form</field>
+            <field name="model">res.partner</field>
+            <field name="type">form</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+
+                <xpath expr="//field[@name='company_type']" position="replace">
+                    <field name="company_type" widget="radio" invisible="1"
+                           class="oe_edit_only"
+                           options="{'horizontal': true}"/>
+                </xpath>
+
+                <xpath expr="/form/sheet/group" position="inside">
+                    <group>
+                        <field name="custom_payment"/>
+                        <field name="custom_region"/>
+                        <field name="custom_type"/>
+                        <field name="custom_qty_control"
+                               attrs="{'invisible':[('supplier','=',True),('customer','=',False)]}"/>
+                        <field name="custom_in_charge"/>
+                        <field name="custom_currency"/>
+                    </group>
+                    <group>
+                        <!--<field name="custom_name_chi"/>-->
+                        <field name="custom_days"/>
+                        <field name="custom_business_type"/>
+                        <field name="custom_short_name"/>
+                        <field name="custom_trade_terms"/>
+                        <field name="custom_trade_port"/>
+                        <field name="custom_status"/>
+                        <field name="custom_customer_status"
+                               attrs="{'invisible':[('supplier','=',True),('customer','=',False)]}"/>
+                        <field name="custom_commission"
+                               attrs="{'invisible':[('supplier','=',True),('customer','=',False)]}"/>
+                        <field name="custom_remark"/>
+                        <field name="vendor_status"
+                               attrs="{'invisible':[('supplier','=',False),('customer','=',True)]}"/>
+                    </group>
+                    <group>
+                        <field name="custom_number" readonly="1"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+
+        <!-- actions opening views on models -->
+        <record model="ir.actions.act_window" id="action_custom_payment">
+            <field name="name">custom_payment</field>
+            <field name="res_model">custom_payment</field>
+        </record>
+        <menuitem name="Payment" id="custom_base_res_partner.custom_payment" parent="contacts.res_partner_menu_config"
+                  action="action_custom_payment"/>
+
+        <record model="ir.actions.act_window" id="action_custom_region">
+            <field name="name">custom_region</field>
+            <field name="res_model">custom_region</field>
+        </record>
+        <menuitem name="Region" id="custom_base_res_partner.custom_region" parent="contacts.res_partner_menu_config"
+                  action="action_custom_region"/>
+
+        <record model="ir.actions.act_window" id="action_custom_type">
+            <field name="name">custom_type</field>
+            <field name="res_model">custom_type</field>
+        </record>
+        <menuitem name="Type" id="custom_base_res_partner.custom_type" parent="contacts.res_partner_menu_config"
+                  action="action_custom_type"/>
+
+        <record model="ir.actions.act_window" id="action_custom_qty_control">
+            <field name="name">custom_qty_control</field>
+            <field name="res_model">custom_qty_control</field>
+        </record>
+        <menuitem name="Qty Control" id="custom_base_res_partner.custom_qty_control"
+                  parent="contacts.res_partner_menu_config" action="action_custom_qty_control"/>
+
+        <!--<record model="ir.actions.act_window" id="action_custom_in_charge">-->
+        <!--<field name="name">custom_in_charge</field>-->
+        <!--<field name="res_model">custom_in_charge</field>-->
+        <!--</record>-->
+        <!--<menuitem name="In-Charge" id="custom_base_res_partner.custom_in_charge"-->
+        <!--parent="contacts.res_partner_menu_config" action="action_custom_in_charge"/>-->
+
+        <record model="ir.actions.act_window" id="action_custom_currency">
+            <field name="name">custom_currency</field>
+            <field name="res_model">custom_currency</field>
+        </record>
+        <menuitem name="Currency" id="custom_base_res_partner.custom_currency" parent="contacts.res_partner_menu_config"
+                  action="action_custom_currency"/>
+
+        <record model="ir.actions.act_window" id="action_custom_business_type">
+            <field name="name">custom_business_type</field>
+            <field name="res_model">custom_business_type</field>
+        </record>
+        <menuitem name="Business Type" id="custom_base_res_partner.custom_business_type"
+                  parent="contacts.res_partner_menu_config" action="action_custom_business_type"/>
+
+        <record model="ir.actions.act_window" id="action_custom_trade_terms">
+            <field name="name">custom_trade_terms</field>
+            <field name="res_model">custom_trade_terms</field>
+        </record>
+        <menuitem name="Trade Terms" id="custom_base_res_partner.custom_trade_terms"
+                  parent="contacts.res_partner_menu_config" action="action_custom_trade_terms"/>
+
+        <record model="ir.actions.act_window" id="action_custom_trade_port">
+            <field name="name">custom_trade_port</field>
+            <field name="res_model">custom_trade_port</field>
+        </record>
+        <menuitem name="Trade Port" id="custom_base_res_partner.custom_trade_port"
+                  parent="contacts.res_partner_menu_config" action="action_custom_trade_port"/>
+
+        <record model="ir.actions.act_window" id="action_custom_status">
+            <field name="name">custom_status</field>
+            <field name="res_model">custom_status</field>
+        </record>
+        <menuitem name="Status" id="custom_base_res_partner.custom_status" parent="contacts.res_partner_menu_config"
+                  action="action_custom_status"/>
+
+        <record model="ir.actions.act_window" id="action_custom_customer_status">
+            <field name="name">custom_customer_status</field>
+            <field name="res_model">custom_customer_status</field>
+        </record>
+        <menuitem name="Customer Status" id="custom_base_res_partner.custom_customer_status"
+                  parent="contacts.res_partner_menu_config" action="action_custom_customer_status"/>
+
+        <record model="ir.actions.act_window" id="action_vendor_status">
+            <field name="name">vendor_status</field>
+            <field name="res_model">vendor_status</field>
+        </record>
+        <menuitem name="Vendor Status" id="custom_base_res_partner.vendor_status"
+                  parent="contacts.res_partner_menu_config" action="action_vendor_status"/>
+
+
+    </data>
+</odoo>

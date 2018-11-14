@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="internal_layout">
+        <!-- Multicompany -->
+        <t t-if="o and 'company_id' in o">
+            <t t-set="company" t-value="o.company_id"/>
+        </t>
+        <t t-if="not o or not 'company_id' in o">
+            <t t-set="company" t-value="res_company"/>
+        </t>
+    
+        <!-- <t t-set="partner" t-value="o.tcustomer"/> -->
+
+        <div class="header">
+            <div class="row">
+                <div class="col-xs-3">
+                    <span t-esc="context_timestamp(datetime.datetime.now()).strftime('%Y-%m-%d %H:%M')"/>
+                </div>
+                <div class="col-xs-2 col-xs-offset-2 text-center">
+                    <!-- <span t-esc="company.name"/> -->
+                    <div style="margin:auto 0;text-align:center;">
+                        <div>嘉濤耆康之家</div>
+                        <div>東威閣1字樓 青菱徑3號 屯門 新界 Hong Kong</div>
+                        <div>電話：<span>2440 9188</span> 傳真:<span>2440 6200</span></div>
+                        <div>收據</div>
+                    </div>
+                </div>
+                <div class="col-xs-2 col-xs-offset-3 text-right">
+                    <ul class="list-inline">
+                        <li><span class="page"/></li>
+                        <li>/</li>
+                        <li><span class="topage"/></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-3">
+                        <strong>院友名稱: </strong><span t-field="tcustomer.name"/>
+                </div>
+            </div>
+        </div>
+        <div class="article">
+          <t t-raw="0" />
+        </div>
+        <div>
+            <div>備註：</div>
+            <div>1.如付款延遲7天以上，會另加費用5%的附加費。</div>
+            <div>2.收款時間為周一至週六上午9時至下午5時。</div>
+        </div>
+    </template>
+</odoo>

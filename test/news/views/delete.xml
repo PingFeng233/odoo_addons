@@ -1,0 +1,31 @@
+<odoo>
+    <data>
+        <template id="delete">
+            <title>News | 删除</title>
+            <div class="container-fluid">
+                <div class="page_content">
+                    <t t-call="news.header"/>
+                    <div style="padding-left:5%;padding-right:5%">
+                        <div class="content" style="margin-top:50px">
+                            <div class="row">
+                                <t t-call="news.sidebar"/>
+                                <div class="col-md-9">
+                                    <h3>
+                                        <t t-esc="new.title"/>
+                                    </h3>
+                                    <p>
+                                        <t t-esc="new.content"/>
+                                    </p>
+                                    <form action="" method="post">
+                                        <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                                        <input type="submit" value="确认删除"/>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </data>
+</odoo>

@@ -1,0 +1,557 @@
+<!-- test -->
+<odoo>
+    <record id="view_elderly_info" model="ir.ui.view">
+        <field name="name">View elderly info</field>
+        <field name="model">res.partner</field>
+        <field name="type">form</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+
+        <field name="arch" type="xml">
+        <data>
+
+            <xpath expr="//button[@name='toggle_active']" position="before">
+                    <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_view_partner_payment_view"
+                        attrs="{'invisible': [('customer', '=', False)]}">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_text">訂金/按金</span>
+                        </div>
+                    </button>
+            </xpath>
+
+            <xpath expr="/form/sheet/group" position="after">
+                <!--<field name="email" position="after">-->
+                <group attrs="{'invisible': [('customer', '=', False)]}">
+                    <group name="elderly_info" String="member info">
+                    
+                        <field name="id"/>
+                        <field name="cid"/>
+                        <field name="seatid"/>
+                        <field name="seat_number"/>
+                        
+
+                        <field name="status"/>
+                        <!-- <field name="bed_no"/> -->
+                        <field name="checkin_date"/>
+                        <field name="id_card_no"/>
+                        <field name="sex"/>
+                        <field name="birthdate"/>
+                        <field name="occupation_id"/>
+                        <field name="marital_status"/>
+                        <field name="education"/>
+                        <field name="religion"/>
+                    </group>
+                    <group>
+                        <field name="economic_source"/>
+                        <field name="aid_amount_start_date"/>
+                        <field name="past_medical_record"/>
+                        <field name="drug_food_sensitive"/>
+                        <field name="contact_person"/>
+                        <field name="reason_for_leaving"/>
+                        <field name="leaving_date"/>
+                    </group>
+                </group>
+            </xpath>
+            <!--</field>-->
+            <xpath expr="//form/sheet/group/group" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </xpath>
+
+            <xpath expr="//group/field[@name='email']" position="replace">
+                <field name="email" attrs="{'invisible': [('supplier', '=', False)]}" />
+            </xpath>
+
+            
+            <field name="lang" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="function" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            <field name="website" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+
+            <!-- <field name="email" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field> -->
+
+            
+
+
+            <field name="title" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+            
+            <field name="title" position="attributes">
+                <attribute name="invisible">True</attribute>
+            </field>
+        </data>
+
+        </field>
+
+    </record>
+
+
+    
+
+
+    <record id="action_occupation_master" model="ir.actions.act_window">
+        <field name="name">Occupation</field>
+        <field name="res_model">wantech.occupation</field>
+    </record>
+
+    <!-- <report
+        id="report_pdf2"
+        model="account.payment"
+        string="Payment Receipt"
+        report_type="qweb-html"
+        name="customer_elderly.wantech_payment_receipt"
+        file="customer_elderly.wantech_payment_receipt"
+        menu="True"
+        paperformat="customer_elderly.paperformat_payment_receipt"
+    /> -->
+        <record id="paperformat_payment_receipt2" model="report.paperformat">
+            <field name="name">US Letter</field>
+            <field name="default" eval="True"/>
+            <field name="format">A4</field>
+            <field name="page_height">0</field>
+            <field name="page_width">0</field>
+            <field name="orientation">Portrait</field>
+            <field name="margin_top">6</field>
+            <field name="margin_bottom">0</field>
+            <field name="margin_left">7</field>
+            <field name="margin_right">7</field>
+            <field name="header_line" eval="False"/>
+            <field name="header_spacing">40</field>
+            <field name="dpi">80</field>
+        </record>
+
+
+    <report
+        id="wantech_payment_receipt_book_call"
+        model="account.payment"
+        string="Payment Receipt"
+        report_type="qweb-pdf"
+        name="customer_elderly.wantech_payment_receipt_book"
+        file="customer_elderly.wantech_payment_receipt_book"
+        menu="False"
+        paperformat="customer_elderly.paperformat_payment_receipt2"
+    />
+
+        <report
+        id="wantech_payment_receipt_deposit_call"
+        model="account.payment"
+        string="Payment Receipt"
+        report_type="qweb-pdf"
+        name="customer_elderly.wantech_payment_receipt_deposit"
+        file="customer_elderly.wantech_payment_receipt_deposit"
+        menu="False"
+        paperformat="customer_elderly.paperformat_payment_receipt2"
+    />
+
+    <report
+        id="report_pdf3"
+        model="account.invoice"
+        string="Payment Receipt"
+        report_type="qweb-pdf"
+        name="customer_elderly.wantech_payment_to_invoice_receipt"
+        file="customer_elderly.wantech_payment_to_invoice_receipt"
+        menu="False"
+        paperformat="customer_elderly.paperformat_payment_receipt2"
+    />
+
+    <!-- report_paperformat.xml -->
+    <record id="account.action_report_payment_receipt" model="ir.actions.report">
+        <field name="paperformat_id" ref="customer_elderly.paperformat_payment_receipt2"/>
+    </record>
+
+    <record id="paperformat_demo01" model="report.paperformat">
+        <field name="name">US Letter</field>
+        <field name="default" eval="True"/>
+        <field name="format">A6</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">7</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">7</field>
+        <field name="margin_right">7</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">40</field>
+        <field name="dpi">80</field>
+    </record>
+
+
+
+    <report
+        id="report_pdf"
+        model="res.partner"
+        string="緊急聯絡資料"
+        report_type="qweb-pdf"
+        name="customer_elderly.wantech_report_pdf"
+        file="customer_elderly.wantech_report_pdf"
+        menu="True"
+        print_report_name = "(object.name+'.pdf')"
+        paperformat="customer_elderly.paperformat_demo01"
+    />
+
+
+    <record id="account_invoice_confirm_view" model="ir.ui.view">
+        <field name="name">PrintPDF</field>
+        <field name="model">wantech.printpdf</field>
+        <field name="arch" type="xml">
+            <form string="Confirm Draft Invoices">
+                <p class="oe_grey">
+                    Once draft invoices are confirmed, you will not be able
+                    to modify them. The invoices will receive a unique
+                    number and journal items will be created in your chart
+                    of accounts.
+                </p>
+                <footer>
+                    <button string="Confirm Invoices" name="invoice_confirm" type="object" default_focus="1" class="btn-primary"/>
+                    <button string="Cancel" class="btn-default" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+  <record id="view_elderly_subscription" model="ir.ui.view">
+        <field name="name">sale.subscription.form.view</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_form"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//group[@name='main']/group[1]/div[1]" position="replace">
+                    <div>
+                        <field name="recurring_next_date"/>
+                        <button string="&#8658; Generate Invoice" class="oe_link" name="recurring_invoice"
+                                type="object"/>
+                    </div>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+
+  <record id="invoice_tree2" model="ir.ui.view">
+        <field name="name">account.invoice.form.view</field>
+        <field name="model">account.invoice</field>
+        <field name="inherit_id" ref="account.invoice_tree"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="/tree" position="replace">
+                <tree decoration-danger="state == 'open'" decoration-info="state == 'draft'" decoration-muted="state == 'cancel'" string="Invoice" default_order="state" >
+                    <field name="partner_id" groups="base.group_user" string="院友"/>
+                   
+                    <field name="date_invoice" string="日期"/>
+                    <field name="number" string="發票編號"/>
+                    
+                    <field name="commercial_partner_id" invisible="1"/>
+                    <field name="reference" invisible="1"/>
+                    <field name="name" invisible="1"/>
+                    <field name="journal_id" invisible="1"/>
+                    
+                    <field name="origin" string="月費計劃"/>
+                    <field name="comment" string="內容"/>
+                    
+                    <field name="amount_total_signed" string="金額" sum="Total"/>
+                    
+                    <field name="payments_widget2_date" string="付款日期"/>
+                    <field name="payments_widget2_ref" string="付款編號"/>
+                    
+                    <!-- <field name="template_id" string="Quotation Template"/> -->
+                    
+                    <field name="residual_signed" string="Amount Due" sum="Amount Due" invisible="1" />
+                    <field name="currency_id" invisible="1"/>
+                    <field name="company_currency_id" invisible="1"/>
+                    <field name="state" string="狀態"/>
+                    <field name="type" invisible="context.get('type',True)"/>
+                    
+                    
+                    <field name="user_id" string="用戶" />
+                    <field name="company_id" string="院社" groups="base.group_multi_company" options="{'no_create': True}"/>
+                    
+                    <field name="date_due" invisible="1" />
+                </tree>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+
+    <record id="wantech_res_partner_kanban_view" model="ir.ui.view">
+        <field name="name">res.partner.kanban</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.res_partner_kanban_view"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='type']" position="after">
+                    <field name="seatid"/>
+                    <field name="seat_number"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <record id="wantech_view_res_partner_filter" model="ir.ui.view">
+        <field name="name">res.partner.select</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//field[@name='name']" position="after">
+                    <field name="seat_number" filter_domain="[('seat_number','ilike',self)]"/>
+                </xpath>
+            </data>
+        </field>
+    </record>
+
+    <!-- <record id="wantech_sale_subscription_view_list" model="ir.ui.view">
+        <field name="name">sale.subscription.list</field>
+        <field name="model">sale.subscription</field>
+        <field name="inherit_id" ref="sale_subscription.sale_subscription_view_list"/>
+        <field name="arch" type="xml">
+            <data>
+                <xpath expr="//tree" position="before">
+                    <button class="oe_button oe_new_button oe_highlight" type="button">New Button</button>
+                </xpath>
+            </data>
+        </field>
+    </record> -->
+
+
+
+
+
+
+
+    <!-- <record model="ir.ui.view" id="res_partner_view_inherit_account_invoice_report">
+        <field name="name">partner.view.button.account_invoice_report</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form" />
+        <field name="priority" eval="22"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='toggle_active']" position="before">
+
+                    <button type="object" class="oe_stat_button" icon="fa-pencil-square-o" name="action_view_partner_invoices"
+                        attrs="{'invisible': [('customer', '=', False)]}">
+                        <div class="o_form_field o_stat_info">
+                            <span class="o_stat_value">
+                                <field name="total_invoiced" widget='monetary' options="{'currency_field': 'currency_id'}"/>
+                            </span>
+                            <span class="o_stat_text">Invoiced</span>
+                        </div>
+                    </button>
+            </xpath>
+        </field>
+    </record> -->
+
+<!-- replace quotation tree form  -->
+    <record id="view_quotation_tree" model="ir.ui.view">
+        <field name="name">sale.order.tree</field>
+        <field name="model">sale.order</field>
+        <field name="priority">4</field>
+        <field name="arch" type="xml">
+            <tree string="Quotation" class="o_sale_order" decoration-bf="message_needaction==True" decoration-muted="state=='cancel'">
+                <field name="message_needaction" invisible="1"/>
+                <field name="name" string="Quotation Number"/>
+                <!-- <field name="template_id" string="Quotation Template" attrs="{'invisible': [('template_id', '==', False)]}" /> -->
+                <field name="date_order" string="Quotation Date"/>
+                <field name="partner_id"/>
+                <field name="user_id"/>
+                <field name="amount_total" sum="Total Tax Included" widget="monetary"/>
+                <field name="currency_id" invisible="1"/>
+                <field name="state"/>
+            </tree>
+        </field>
+    </record>
+
+<!-- replace quotation tree form  -->
+        <record id="sale.view_order_tree" model="ir.ui.view">
+            <field name="name">sale.order.tree</field>
+            <field name="model">sale.order</field>
+            <field name="priority">2</field>
+            <field name="arch" type="xml">
+                <tree string="Sales Orders" decoration-bf="message_needaction==True" decoration-muted="state=='cancel'">
+                <field name="message_needaction" invisible="1"/>
+                <field name="partner_id" string="院友"/>
+                <field name="name" string="訂單編號"/>
+                <field name="confirmation_date" string="日期"/>
+                
+                <!-- <field name="template_id" string="月費計劃" attrs="{'invisible': [('template_id', '==', False)]}" /> -->
+
+                <field name="amount_total" string="金額" sum="Total Tax Included" widget="monetary"/>
+                
+                <field name="currency_id" invisible="1"/>
+                <field name="invoice_status" string="狀態" invisible="1"/>
+                <field name="state" invisible="1"/>
+                
+                <field name="user_id" string="用戶" />
+
+
+
+                </tree>
+            </field>
+        </record>
+
+        <record id="action_quotations" model="ir.actions.act_window">
+            <field name="name">Quotations</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_type">form</field>
+            <field name="view_id" ref="customer_elderly.view_quotation_tree"/>
+            <field name="view_mode">tree,kanban,form,calendar,pivot,graph</field>
+            <field name="search_view_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+            <field name="help" type="html">
+              <p class="oe_view_nocontent_create">
+                Create a Quotation, the first step of a new sale.
+              </p><p>
+                Your next actions should flow efficiently: confirm the Quotation
+                to a Sales Order, then create the Invoice and collect the Payment.
+              </p><p>
+                Note that once a Quotation becomes a Sales Order, it will be moved
+                from the Quotations list to the Sales Order list.
+              </p>
+            </field>
+        </record>
+
+
+
+    <data>
+        <!--Default Notification Email template -->
+        <record id="mail.mail_template_data_notification_email_default" model="mail.template">
+            <field name="name">Notification Email</field>
+            <field name="subject">${object.subject or (object.record_name and 'Re: %s' % object.record_name) or (object.parent_id and object.parent_id.subject and 'Re: %s' % object.parent_id.subject) or (object.parent_id and object.parent_id.record_name and 'Re: %s' % object.parent_id.record_name)}</field>
+            <field name="model_id" ref="mail.model_mail_message"/>
+            <field name="auto_delete" eval="True"/>
+            <field name="body_html"><![CDATA[
+% set company = ctx.get('company', user.company_id)
+<div>
+% if ctx.get('has_button_access'):
+<div itemscope itemtype="http://schema.org/EmailMessage">
+    <div itemprop="potentialAction" itemscope itemtype="http://schema.org/ViewAction">
+        <link itemprop="target" href="${ctx['button_access']['url']}"/>
+        <link itemprop="url" href="${ctx['button_access']['url']}"/>
+        <meta itemprop="name" content="View ${ctx['model_name']}"/>
+    </div>
+</div>
+% endif
+% if not ctx['is_discussion'] or not len(ctx['actions']) == 0 or ctx.get('has_button_access'):
+<div summary="o_mail_notification" style="padding: 0px; width:600px;">
+<table cellspacing="0" cellpadding="0" border="0" style="width: 600px; margin-top: 5px;">
+<tbody><tr>
+    <td valign="center">
+        % if ctx.get('has_button_access'):
+        <a href="${ctx['button_access']['url']}" style="padding: 8px 12px; font-size: 12px; color: #FFFFFF; text-decoration: none !important; font-weight: 400; background-color: #875A7B; border: 0px solid #875A7B; border-radius:3px">${ctx['button_access']['title']}</a>
+        % endif
+
+        % if ctx.get('has_button_follow'):
+        % if ctx.get('has_button_access'):
+           |
+        % endif
+        <a href="${ctx['button_follow']['url']}" style="color: #875A7B; text-decoration: none !important;">${ctx['button_follow']['title']}</a>
+        % elif ctx.get('has_button_unfollow'):
+        % if ctx.get('has_button_access'):
+           |
+        % endif
+        <a href="${ctx['button_unfollow']['url']}" style="color: #875A7B; text-decoration: none !important;">${ctx['button_unfollow']['title']}</a>
+        % endif
+
+        % if ctx.get('actions'):
+        % for action in ctx['actions']:
+        |
+        <a href="${action['url']}" style="color: #875A7B; text-decoration:none !important;">${action['title']}</a>
+        % endfor
+        % endif
+    </td>
+    <td valign="center" align="right">
+        <img src="/logo.png?company=${company.id}" style="padding: 0px; margin: 0px; height: auto; max-width: 80px; max-height: 40px;" alt="${company.name}">
+    </td>
+</tr>
+<tr>
+    <td colspan="2" style="text-align:center;">
+        <hr width="100%"
+            style="background-color:rgb(204,204,204);border:medium none;clear:both;display:block;font-size:0px;min-height:1px;line-height:0; margin:10px 0;">
+        % if ctx.get('subtype') and ctx.get('subtype').internal:
+        <p style="background-color: #f2dede; padding: 5px; margin-bottom: 16px;">
+            <strong>Internal communication</strong>: Replying will post an internal note. Followers won't receive any email notification.
+        </p>
+        % endif
+    </td>
+</tr>
+</tbody></table>
+</div>
+% endif
+<div>
+    ${object.body | safe}
+</div>
+% if ctx.get('tracking'):
+    <ul>
+    % for tracking in ctx['tracking']
+        <li>${tracking[0]} : ${tracking[1]} -&gt; ${tracking[2]}</li>
+    % endfor
+    </ul>
+% endif
+
+% if ctx.get('signature'):
+    ${ctx['signature'] | safe}
+% endif
+<br/>
+<p style="color: #555555;">
+    Sent by
+    % if ctx.get('website_url'):
+    <a href="${ctx['website_url']}" style="text-decoration:none; color: #875A7B;">
+    % endif
+    ${ctx.get('company_name')}
+    % if ctx.get('website_url'):
+    </a>
+    % endif
+    using
+</p>
+</div>]]></field>
+        </record>
+
+    </data>
+
+
+
+
+
+  <!-- <record id="view_invoice_pivot_decp" model="ir.ui.view">
+        <field name="name">account.invoice.report.decp</field>
+        <field name="model">account.invoice.report</field>
+        <field name="inherit_id" ref="account.view_account_invoice_report_pivot"/>
+            <field name="arch" type="xml">
+                <pivot>
+                    <field name="product_id" type="row"/>
+                </pivot>
+            </field>
+    </record> -->
+
+
+
+
+
+        <menuitem id="sale.menu_sale_quotations"
+                action="customer_elderly.action_quotations"
+                parent="sale.sale_order_menu"
+                sequence="1" groups="sales_team.group_sale_salesman"/>
+
+
+    <act_window name="Print"
+    res_model="wantech.printpdf"
+    src_model="res.partner"
+    view_mode="form"
+    target="new"
+    key2="client_action_multi"
+    id="demo01"
+    context="{'search_default_journal_id': active_id}"/>
+
+    <menuitem id="menu_action_account_bank_journal_form2" name="Account Payment" action="account.action_account_payments" parent="contacts.menu_contacts" sequence="2"/>
+
+    <menuitem name="Account Invoice Report" action="account.action_account_invoice_report_all" id="menu_action_account_invoice_report_all" parent="contacts.menu_contacts" sequence="3"/>
+
+
+    <menuitem id="menu_occupation_master" parent="sale.menu_sale_config" action="action_occupation_master"
+              name="Occupation" sequence="21"/>
+</odoo>

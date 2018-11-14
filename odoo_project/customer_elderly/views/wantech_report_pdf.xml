@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="wantech_report_pdf">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.external_layout">
+                    <div class="page">
+                        <table style="width:300px;border-collapse: collapse;border: 1px solid black;margin-top:30px">
+                         <thead>
+                            <tr>
+                                <th colspan="2" style="border: 1px solid black;padding:5px">以往病歷和藥物敏感紀錄:</th>
+                            </tr>
+
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <td style="border: 1px solid black;width:100px;padding:5px">姓名</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.name" /></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;padding:5px">身分證號碼</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.id_card_no" /></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;padding:5px">性別</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.sex" /></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;padding:5px">出生年月日</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.birthdate" /></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;padding:5px">聯絡人</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.contact_person" /></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;padding:5px">以往病歷</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.past_medical_record" /></td>
+                        </tr>
+                        <tr>
+                            <td style="border: 1px solid black;padding:5px">藥物/食物敏感紀錄</td>
+                            <td style="border: 1px solid black;padding:5px"><span t-field="o.drug_food_sensitive" /></td>
+                        </tr>
+                        </tbody>
+                        </table>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+</odoo>

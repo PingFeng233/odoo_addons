@@ -1,0 +1,377 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#	* customer_elderly
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 11.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2018-05-25 08:35+0000\n"
+"PO-Revision-Date: 2018-05-25 08:35+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "<strong>Memo: </strong>"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "<strong>Payment Amount: </strong>"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "<strong>Vendor: </strong>"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "<strong>付款方式: </strong>"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "<strong>付款日期: </strong>"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "<strong>院友名稱: </strong>"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "Amount Paid"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "Balance"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.account_invoice_confirm_view
+msgid "Cancel"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.account_invoice_confirm_view
+msgid "Confirm Draft Invoices"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.account_invoice_confirm_view
+msgid "Confirm Invoices"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model,name:customer_elderly.model_res_partner
+msgid "Contact"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_create_uid
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf_create_uid
+msgid "Created by"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_create_date
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf_create_date
+msgid "Created on"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_display_name
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf_display_name
+msgid "Display Name"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_id
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf_id
+msgid "ID"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "Invoice Date"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "Invoice Number"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation___last_update
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf___last_update
+msgid "Last Modified on"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_write_uid
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf_write_uid
+msgid "Last Updated by"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_write_date
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_printpdf_write_date
+msgid "Last Updated on"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_wantech_occupation_name
+msgid "Name"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.actions.act_window,name:customer_elderly.action_occupation_master
+#: model:ir.ui.menu,name:customer_elderly.menu_occupation_master
+msgid "Occupation"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.account_invoice_confirm_view
+msgid "Once draft invoices are confirmed, you will not be able\n"
+"                    to modify them. The invoices will receive a unique\n"
+"                    number and journal items will be created in your chart\n"
+"                    of accounts."
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "Original Amount"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.actions.report,name:customer_elderly.report_pdf2
+msgid "Payment Receipt2"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model,name:customer_elderly.model_account_payment
+msgid "Payments"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.actions.act_window,name:customer_elderly.demo01
+msgid "Print"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model,name:customer_elderly.model_wantech_printpdf
+msgid "PrintPDF"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_my_credit_limit
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_my_credit_limit
+msgid "The Credit Limit :"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.actions.report,name:customer_elderly.report_pdf
+msgid "report_pdf"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.view_elderly_account_payment_form
+msgid "test"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model,name:customer_elderly.model_wantech_customer_elderly
+msgid "wantech.customer_elderly"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model,name:customer_elderly.model_wantech_occupation
+msgid "wantech.occupation"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_account_payment_upload_file
+msgid "上載附件"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "付款編號:"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "付款總額:"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_past_medical_record
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_past_medical_record
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "以往病歷"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "以往病歷和藥物敏感紀錄:"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_checkin_date
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_checkin_date
+msgid "入住日期"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_birthdate
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_birthdate
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "出生年月日"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_bed_no
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_bed_no
+msgid "區/床號"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "嘉濤耆康之家"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "姓名"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_marital_status
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_marital_status
+msgid "婚姻狀況"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_education
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_education
+msgid "學歷"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_religion
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_religion
+msgid "宗教"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_sex
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_sex
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "性別"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_aid_amount_start_date
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_aid_amount_start_date
+msgid "援助金額啟始日期"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "收據"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_account_payment_quantity
+msgid "數量"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "東威閣1字樓 青菱徑3號 屯門 新界 Hong Kong"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_account_payment_file_name
+msgid "檔案名稱"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_status
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_status
+msgid "狀況"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_account_payment_item_id
+msgid "產品"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_economic_source
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_economic_source
+msgid "經濟來源"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_contact_person
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_contact_person
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "聯絡人"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_occupation_id
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_occupation_id
+msgid "職業"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_drug_food_sensitive
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_drug_food_sensitive
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "藥物/食物敏感紀錄"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_id_card_no
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_id_card_no
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_report_pdf
+msgid "身分證號碼"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "重印收據"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_reason_for_leaving
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_reason_for_leaving
+msgid "離開原因"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_res_partner_leaving_date
+#: model:ir.model.fields,field_description:customer_elderly.field_res_users_leaving_date
+msgid "離開日期"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.model.fields,field_description:customer_elderly.field_account_payment_is_petty_cash
+msgid "零用錢"
+msgstr ""
+
+#. module: customer_elderly
+#: model:ir.ui.view,arch_db:customer_elderly.wantech_payment_receipt
+msgid "電話：<span>2440 9188</span> 傳真:<span>2440 9188</span>"
+msgstr ""
+

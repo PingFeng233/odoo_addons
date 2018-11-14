@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="wantech_sale_subscription_toolbar" xml:space="preserve">
+  <t t-extend="ListView.buttons">
+    <t t-jquery="button.o_list_button_add" t-operation="after">
+        <button t-if="widget.modelName=='sale.subscription'" class="btn btn-primary btn-sm o_list_tender_button_create"  type="button">Generate Invoice</button>
+    </t>
+  </t>
+</templates>

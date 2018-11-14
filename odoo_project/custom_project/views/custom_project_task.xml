@@ -1,0 +1,20 @@
+<odoo>
+    <data>
+        <record id="custom_view_task_form" model="ir.ui.view">
+            <field name="name">custom_view_task_form</field>
+            <field name="model">project.task</field>
+            <field name="inherit_id" ref="project.view_task_form2"/>
+            <field name="arch" type="xml">
+                <xpath expr="//group/field[@name='project_id']/.." position="inside">
+                    <field name="new_priority"/>
+                </xpath>
+                <xpath expr="//group/field[@name='date_assign']/.." position="replace">
+                </xpath>
+                <xpath expr="//group/field[@name='tag_ids']" position="after">
+                    <field name="date_assign" groups="base.group_no_one"/>
+                    <field name="date_last_stage_update" groups="base.group_no_one"/>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo>

@@ -1,0 +1,32 @@
+<odoo>
+    <data>
+        <record id="account_journal_deposit_cash" model="account.journal">
+            <field name="name">按金現金</field>
+            <field name="code">AJXJ</field>
+            <field name="type">cash</field>
+            <field name="company_id" eval="1"/>
+            <field name="sequence_id" eval="12"/>
+        </record>
+        <record id="account_journal_deposit_check" model="account.journal">
+            <field name="name">按金支票</field>
+            <field name="code">AJZP</field>
+            <field name="type">bank</field>
+            <field name="company_id" eval="1"/>
+            <field name="sequence_id" eval="13"/>
+        </record>
+        <record id="account_journal_order_cash" model="account.journal">
+            <field name="name">訂金現金</field>
+            <field name="code">DJXJ</field>
+            <field name="type">cash</field>
+            <field name="company_id" eval="1"/>
+            <field name="sequence_id" eval="12"/>
+        </record>
+        <record id="account_journal_order_check" model="account.journal">
+            <field name="name">訂金支票</field>
+            <field name="code">DJZP</field>
+            <field name="type">bank</field>
+            <field name="company_id" eval="1"/>
+            <field name="sequence_id" eval="13"/>
+        </record>
+    </data>
+</odoo>
